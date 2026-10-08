@@ -210,6 +210,14 @@ def veterans_data():
     conn.close()
     return render_template("veterans_data.html", veterans=[dict(r) for r in rows])
 
+@app.route("/api/pvo-demo", methods=["GET"])
+def pvo_demo():
+    return jsonify({
+        "project": "Poway Veterans Organization",
+        "status": "Backend connected",
+        "message": "PVO frontend and backend are communicating."
+    })
+
 @app.route('/volunteers_data')
 @login_required
 def volunteers_data():
@@ -359,9 +367,14 @@ app.cli.add_command(custom_cli)
 def generate_data():
     initTitanic()
 
+# Keep the prescreener database ready for fresh local installs and deployments.
+create_tables()
+
 # this runs the flask application on the development server
 if __name__ == "__main__":
     host = "0.0.0.0"
     port = int(os.environ.get('FLASK_PORT', 8426))  # Default to 8426 if FLASK_PORT is not set
     print(f"** Server running: http://localhost:{port}")  # Pretty link
     app.run(debug=True, host=host, port=port, use_reloader=False)
+
+

@@ -1,9 +1,12 @@
 import sqlite3
 import os
 from flask import Blueprint, request, jsonify
-from flask_cors import cross_origin
 
-DEFAULT_DB_PATH = "/app/instance/volunteers.db"
+DEFAULT_DB_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "instance",
+    "volunteers.db",
+)
 
 
 class VolunteerModel:
@@ -74,7 +77,6 @@ volunteer_api = Blueprint('volunteer_api', __name__)
 volunteer_model = VolunteerModel()
 
 @volunteer_api.route('/api/volunteers', methods=['GET', 'POST', 'OPTIONS'])
-@cross_origin(origins=["https://pvo.opencodingsociety.com"], supports_credentials=True)
 def volunteers():
     if request.method == 'POST':
         data = request.get_json()

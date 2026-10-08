@@ -19,3 +19,7 @@ instance/volumes/
 instance/data.json
 instance/data.json.*.bak
 instance/data/jokes.json
+
+# SQLite temp files
+*.db-shm
+*.db-wal
