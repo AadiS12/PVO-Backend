@@ -124,7 +124,7 @@ pip install -r requirements.txt
     - Login using your secrets from env
 
   - Basic API test
-    - [Jokes](http://localhost:8426/api/jokes/)
+    - [Jokes](http://localhost:8426/api/jokes/) 
 
 ### User Operations
 | Purpose | Correct Endpoint | What It Does |
