@@ -167,7 +167,7 @@ class TitanicModel:
         }
 
 
-# ── Initialization helper (called from generate_data CLI command) ─────────────
+# ── Initialization helper (called from generate_titanic_data CLI command) ────
 
 def initTitanic():
     """Initialize the Titanic Model at app startup.

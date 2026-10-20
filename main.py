@@ -363,8 +363,8 @@ def generate_data():
 # Register the custom command group with the Flask application
 app.cli.add_command(custom_cli)
 
-@custom_cli.command('generate_data')
-def generate_data():
+@custom_cli.command('generate_titanic_data')
+def generate_titanic_data():
     initTitanic()
 
 # Keep the prescreener database ready for fresh local installs and deployments.
@@ -376,5 +376,4 @@ if __name__ == "__main__":
     port = int(os.environ.get('FLASK_PORT', 8426))  # Default to 8426 if FLASK_PORT is not set
     print(f"** Server running: http://localhost:{port}")  # Pretty link
     app.run(debug=True, host=host, port=port, use_reloader=False)
-
 
