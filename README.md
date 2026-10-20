@@ -136,6 +136,10 @@ pip install -r requirements.txt
 | **Create Post** | `/api/post` | Creates a new post |
 | **Gemini AI** | `/api/gemini` | Chat with AI assistant |
 
+### User Management
+
+Sign in to the backend, then open `/fopl/db` to view accounts stored in its database. The page requires authentication; administrators can view all accounts, while other signed-in users can only see their own account.
+
 ### MicroBlog Operations
 | Method | Endpoint | Description |
 |--------|----------|-------------|

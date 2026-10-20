@@ -665,8 +665,8 @@ class UserAPI:
             """
             Create a new guest user account.
 
-            Accepts only username (uid) and password. Auto-generates required fields.
-            No GitHub validation required for guest accounts.
+            Accepts a username (uid), password, and optional name and email.
+            No GitHub validation is required.
 
             Returns:
                 JSON response with the created user details or an error message.
@@ -684,9 +684,12 @@ class UserAPI:
             if password is None or len(password) < 2:
                 return {'message': 'Password is missing, or is less than 2 characters'}, 400
 
-            # Auto-generate required fields for guest accounts
-            name = f"Guest_{uid}"
-            email = "?"
+            # Keep legacy guest signups working while allowing the PVO form
+            # to store the member's actual name and optional email.
+            name = (body.get('name') or f"Guest_{uid}").strip()
+            if len(name) < 2:
+                return {'message': 'Name must be at least 2 characters'}, 400
+            email = (body.get('email') or "?").strip()
             sid = "?"
             school = "?"
 
